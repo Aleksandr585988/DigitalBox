@@ -1,0 +1,22 @@
+/* Ссылка без наведения */
+.hover-link {
+    color: black;
+    text-decoration: none;
+}
+
+/* При наведении */
+.hover-link:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* Полоса для заголовка через весь экран */
+.header-bar {
+    background-color: lightgray; /* или другой цвет */
+    color: black;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
