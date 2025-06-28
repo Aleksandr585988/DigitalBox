@@ -3,13 +3,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CO</title>
+    <title>CONTENT</title>
     <link rel="stylesheet" href="{% static 'shop/styles.css' %}">
 </head>
 <body>
-    <h1 class="header-bar">DigitalBox</h1>
+    <header class="header">
+        <div class="left-group">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="product-catalog" onclick="toggleCatalog()"> Каталог </div>
+        </div>
+        <h1 class="site-title"> DigitalBox </h1>
+    </header>
+
+<!----------------------------------------------------------------->
+
+    <!-- КНОПКА Каталог -->
+    <div class="catalog-list" id="catalog" style="display: none;">
+        <h2>Категории:</h2>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'products_by_category' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
     <a href="{% url 'laptops_and_computers' %}" class="hover-link">
         <h2>Laptops and Computers</h2>
     </a>
+
+    <script>
+        function toggleCatalog() {
+            const catalog = document.getElementById("catalog");
+            catalog.style.display = catalog.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
+<!----------------------------------------------------------------->
+    <!-- КНОПКА MENU -->
+    <div class="menu-list" id="menu" style="display: none;">
+        <h2>Категории:</h2>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
 </body>
 </html>

@@ -1,12 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>C</title>
+    <title>Laptops and Computers</title>
+    <link rel="stylesheet" href="{% static 'shop/styles.css' %}">
 </head>
 <body>
     <h1>DigitalBox</h1>
-    <h2>laptops</h2>
-    <h2>computers</h2>
+
+    <!-- Блок с категориями -->
+    <h2>Категории:</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'products_by_category' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

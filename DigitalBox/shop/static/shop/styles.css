@@ -1,22 +1,86 @@
-/* Ссылка без наведения */
+/* Верхняя полоса */
+.header {
+    background-color: black;
+    padding: 15px 20px;
+    color: black;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* расстояние между кнопкой и каталогом */
+}
+
+/* Название сайта */
+.site-title {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+}
+
+/* Кнопка "Каталог товаров" */
+.product-catalog  {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Окно кнопки каталог товаров */
+.catalog-list {
+    list-style: none;
+    padding: 15;
+    margin: 0;
+    position: absolute;
+    background: white;
+    color: black;
+    display: none;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 200px;
+    z-index: 1000;
+    top: 60px;
+    left: 20px;
+}
+
+/*Кнопки "Меню" */
+.menu-toggle {
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Окно кнопки меню */
+.menu-list {
+    list-style: none;
+    padding: 15;
+    margin: 0;
+    position: absolute;
+    background: white;
+    color: black;
+    display: none;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 200px;
+    z-index: 1000;
+    top: 60px;
+    left: 20px;
+}
+
+/* Ссылки */
 .hover-link {
     color: black;
     text-decoration: none;
+    margin: 20px;
+    display: block;
 }
-
-/* При наведении */
-.hover-link:hover {
-    color: blue;
-    text-decoration: underline;
-}
-
-/* Полоса для заголовка через весь экран */
-.header-bar {
-    background-color: lightgray; /* или другой цвет */
-    color: black;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
