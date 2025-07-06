@@ -36,7 +36,7 @@
 /* Окно кнопки каталог товаров */
 .catalog-list {
     list-style: none;
-    padding: 15;
+    padding: 15px;
     margin: 0;
     position: absolute;
     background: white;
@@ -63,7 +63,7 @@
 /* Окно кнопки меню */
 .menu-list {
     list-style: none;
-    padding: 15;
+    padding: 15px;
     margin: 0;
     position: absolute;
     background: white;
