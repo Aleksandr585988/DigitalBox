@@ -1,16 +1,16 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from cart.models import Cart, CartItem
-from shop.models import Product
+from models import Cart, CartItem
+from DigitalBox.shop.models import Product
 
 def get_cart(request):
     if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart, _ = Cart.objects.get_or_create(user=request.user)
     else:
         session_key = request.session.session_key
         if not session_key:
             request.session.create()
             session_key = request.session.session_key
-        cart, created = Cart.objects.get_or_create(session_key=session_key)
+        cart, _ = Cart.objects.get_or_create(session_key=session_key)
     return cart
 
 
