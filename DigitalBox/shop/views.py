@@ -12,11 +12,11 @@ def laptops_and_computers(request):
         'categories': categories
     })
 
-def product_list(request):
+def products_list(request):
     product = Product.objects.filter(available=True)
     return render(request, 'shop/product_list.html', {'products': product})
 
-def product_laptop(request):
+def products_laptop(request):
     product = Product.objects.filter(available=True)
     return render(request, 'shop/product_laptop.html', {'products': product})
 
