@@ -9,8 +9,9 @@
 <body>
     <header class="header">
         <div class="left-group">
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-            <div class="product-catalog" onclick="toggleCatalog()"> Каталог </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="product-catalog" onclick="toggleCatalog()"> Каталог </button>
+
         </div>
         <h1 class="site-title"> DigitalBox </h1>
     </header>
@@ -29,7 +30,6 @@
 
     <a href="{% url 'laptops_and_computers' %}" class="hover-link">
         <h2>Laptops and Computers</h2>
-        <h2>1111111</h2>
     </a>
 
     <script>

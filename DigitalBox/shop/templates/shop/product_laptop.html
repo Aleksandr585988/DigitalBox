@@ -16,6 +16,7 @@
             {% if product.image %}
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
             {% endif %}
+            <a href="{% url 'cart:add' product.id %}">🛒</a>
         </div>
     {% endfor %}
 </body>

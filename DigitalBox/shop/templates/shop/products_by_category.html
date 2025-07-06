@@ -2,13 +2,14 @@
 
 <ul>
   {% for product in products %}
-    <li>
+      <li>
       <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
+      <a href="{% url 'cart:add' product.id %}">🛒</a>
       <p>Цена: {{ product.price }}</p>
-      {% if product.image %}
-        <img src="{{ product.image.url }}" width="150" alt="{{ product.name }}">
-      {% endif %}
+          {% if product.image %}
+              <img src="{{ product.image.url }}" width="150" alt="{{ product.name }}">
+          {% endif %}
+
     </li>
   {% empty %}
     <li>Нет товаров в этой категории.</li>
