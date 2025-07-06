@@ -1,0 +1,12 @@
+<h2>Ваша корзина</h2>
+<ul>
+    {% for item in cart_items %}
+        <li>
+            {{ item.product.name }} — {{ item.quantity }} шт. — {{ item.product.price }} грн. за шт.
+            <h2>-------------------------------------------------</h2>
+        </li>
+    {% empty %}
+        <li>Корзина пуста</li>
+    {% endfor %}
+</ul>
+<p>Общая сумма: {{ total_price }} грн.</p>
