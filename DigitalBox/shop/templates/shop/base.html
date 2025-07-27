@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops and Computers</title>
+    <link rel="stylesheet" href="{% static 'shop/styles.css' %}">
+</head>
+<body>
+
+
+<!-- =========================
+    🔝 ХЕДЕР / ШАПКА САЙТА
+========================== -->
+<header class="header">
+    <div class="left-group">
+        <!-- ☰ Кнопка Меню -->
+        <button id="menu-toggle"
+                class="menu-toggle"
+                aria-controls="menu"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <!-- 📂 Кнопка Каталога -->
+        <button id="catalog-toggle"
+                class="product-catalog"
+                aria-controls="catalog"
+                aria-expanded="false">
+            Каталог
+        </button>
+
+    </div>
+
+    <div class="right-group">
+        <!-- Кнопка перехода в корзину -->
+        <button class="product-catalog" aria-label="Перейти в корзину" onclick="window.location.href='{% url 'cart:detail' %}'">
+            🛒
+        </button>
+
+        <!-- 🔗 Логотип-ссылка на главную -->
+        <a href="{% url 'shop:home' %}" class="site-title">DigitalBox</a>
+    </div>
+</header>
+
+<!-- =========================
+    📂 КАТАЛОГ категорий (выпадающий)
+========================= -->
+<nav id="catalog" class="catalog-list hidden" aria-label="Каталог">
+    <h2>Категории</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'shop:products_by_category' slug=category.slug %}">
+                {{ category.name }}
+            </a></li>
+        {% endfor %}
+    </ul>
+</nav>
+
+<!-- =========================
+    🧭 МЕНЮ (выпадающее)
+========================= -->
+<nav id="menu" class="menu-list hidden" aria-label="Навигация">
+    <h2>Навигация</h2>
+    <ul>
+        <li>
+            <a href="{% url 'cart:detail' %}" >
+                🛒 Корзина
+            </a>
+        </li>
+        <li> другие пункты </li>
+    </ul>
+</nav>
+
+<!-- =========================
+    📄 КОНТЕНТ СТРАНИЦЫ
+========================= -->
+<main>
+    {% block content %}
+    <!-- сюда будет вставляться содержимое дочерних шаблонов -->
+    {% endblock %}
+</main>
+
+
+<!-- =========================
+    ⚙️ СКРИПТЫ JS
+========================= -->
+<script>
+    /* Универсальное скрытие/раскрытие блоков */
+    function toggle(id, btn) {
+        const block = document.getElementById(id);
+        const opened = !block.classList.toggle('hidden');
+        if (btn) btn.setAttribute('aria-expanded', opened);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const catalogToggle = document.getElementById('catalog-toggle');
+        const menu = document.getElementById('menu');
+        const catalog = document.getElementById('catalog');
+
+        // Открытие меню
+        menuToggle.addEventListener('click', e => {
+            e.stopPropagation();
+            toggle('menu', e.currentTarget);
+        });
+
+        // Открытие каталога
+        catalogToggle.addEventListener('click', e => {
+            e.stopPropagation();
+            toggle('catalog', e.currentTarget);
+        });
+
+        // Закрытие при клике вне
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                if (!menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+            if (!catalog.contains(event.target) && !catalogToggle.contains(event.target)) {
+                if (!catalog.classList.contains('hidden')) {
+                    catalog.classList.add('hidden');
+                    catalogToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

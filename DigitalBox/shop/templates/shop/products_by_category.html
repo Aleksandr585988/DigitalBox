@@ -1,17 +1,24 @@
-<h2>Категория: {{ category.name }}</h2>
+{% extends "shop/base.html" %}
+{% load static %}
 
-<ul>
-  {% for product in products %}
-      <li>
-      <h3>{{ product.name }}</h3>
-      <a href="{% url 'cart:add' product.id %}">🛒</a>
-      <p>Цена: {{ product.price }}</p>
-          {% if product.image %}
-              <img src="{{ product.image.url }}" width="150" alt="{{ product.name }}">
-          {% endif %}
+{% block title %}Laptops and Computers{% endblock %}
 
-    </li>
-  {% empty %}
-    <li>Нет товаров в этой категории.</li>
-  {% endfor %}
-</ul>
+{% block content %}
+    <h2>Категория: {{ category.name }}</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'shop:product_detail' category_slug=product.category.slug product_slug=product.slug %}" class="hover-link">
+                    <h4>{{ product.model_name }}</h4>
+                </a>
+                <a href="{% url 'cart:add' product.id %}">🛒 Добавить в корзину</a>
+                <p>Цена: {{ product.price }}</p>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" width="150" alt="{{ product.brand.name }}">
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Нет товаров в этой категории.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

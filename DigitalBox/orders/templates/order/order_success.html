@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+    <h2>Спасибо! Ваш заказ №{{ order.id }} оформлен.</h2>
+    <p>Мы скоро свяжемся с вами для уточнения деталей.</p>
+
+    <ul>
+        <li>Товар: {{ order.product.model_name }}</li>
+        <li>Количество: {{ order.quantity }}</li>
+        <li>Сумма: {{ order.total_price }} ₴</li>
+    </ul>
+
+    <a href="{% url 'order:my_orders' %}">Мои заказы</a> |
+    <a href="{% url 'shop:home' %}">На главную</a>
+{% endblock %}
+

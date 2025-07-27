@@ -1,0 +1,11 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}DigitalBox Каталог{% endblock %}
+
+{% block content %}
+    Здесь основной контент страницы
+    <a href="{% url 'shop:laptops_and_computers' %}" class="hover-link">
+        <h2>Laptops and Computers</h2>
+    </a>
+{% endblock %}

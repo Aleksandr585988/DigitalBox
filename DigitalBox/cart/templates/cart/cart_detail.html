@@ -1,12 +1,22 @@
-<h2>Ваша корзина</h2>
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2>Ваша корзина</h2>
 <ul>
     {% for item in cart_items %}
         <li>
-            {{ item.product.name }} — {{ item.quantity }} шт. — {{ item.product.price }} грн. за шт.
-            <h2>-------------------------------------------------</h2>
+            <p>{{ item.product.model_name }} — {{ item.quantity }} шт. — {{ item.product.price }} грн. за шт.</p>
+            <form action="{% url 'cart:remove' item.product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Удалить</button>
+            </form>
+            <hr>
         </li>
     {% empty %}
         <li>Корзина пуста</li>
     {% endfor %}
 </ul>
 <p>Общая сумма: {{ total_price }} грн.</p>
+    <a class="btn" href="{% url 'cart:checkout' %}">Перейти к оплате</a>
+{% endblock %}

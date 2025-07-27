@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Content, Category
+from .models import Product, Category
 
-def content_list(request):
+def digital_box(request):
     categories = Category.objects.all()
-    content = Content.objects.all()
-    return render(request, 'shop/content.html', {'content': content, 'categories': categories})
+    return render(request, 'shop/DigitalBox.html', {'categories': categories})
 
 def laptops_and_computers(request):
     categories = Category.objects.all()
@@ -12,18 +11,19 @@ def laptops_and_computers(request):
         'categories': categories
     })
 
-def products_list(request):
-    product = Product.objects.filter(available=True)
-    return render(request, 'shop/product_list.html', {'products': product})
-
-def products_laptop(request):
-    product = Product.objects.filter(available=True)
-    return render(request, 'shop/product_laptop.html', {'products': product})
-
-def products_by_category(request, category_id):
-    category = get_object_or_404(Category, id=category_id)
+def products_by_category(request, slug):
+    category = get_object_or_404(Category, slug=slug)
     products = Product.objects.filter(category=category, available=True)
     return render(request, 'shop/products_by_category.html', {
         'category': category,
         'products': products
+    })
+
+
+def product_detail(request, category_slug, product_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    product = get_object_or_404(Product, slug=product_slug, category=category, available=True)
+    return render(request, 'shop/product_detail.html', {
+        'category': category,
+        'product': product
     })

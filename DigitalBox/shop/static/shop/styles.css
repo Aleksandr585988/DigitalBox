@@ -1,19 +1,28 @@
-/* Верхняя полоса */
+/* =========================
+    📦 ОСНОВНЫЕ СТИЛИ
+========================= */
+
+.hidden { display: none !important; }
+
+/* =========================
+    🧭 ХЕДЕР / НАВИГАЦИЯ
+========================= */
 .header {
     background-color: black;
     padding: 15px 20px;
-    color: black;
+    color: white;
     font-family: sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 30px;
 }
 
-.left-group {
+.left-group,
+.right-group {
     display: flex;
     align-items: center;
-    gap: 15px; /* расстояние между кнопкой и каталогом */
+    gap: 30px; /* Отступы между элементами */
 }
 
 /* Название сайта */
@@ -23,44 +32,24 @@
     color: white;
 }
 
-/* Кнопка "Каталог товаров" */
-.product-catalog  {
+/* =========================
+    🔘 КНОПКИ (меню, каталог, корзина)
+========================= */
+.menu-toggle,
+.product-catalog {
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
     background: white;
     padding: 15px;
     border-radius: 10px;
+    border: none;
 }
 
-/* Окно кнопки каталог товаров */
-.catalog-list {
-    list-style: none;
-    padding: 15px;
-    margin: 0;
-    position: absolute;
-    background: white;
-    color: black;
-    display: none;
-    border: 1px solid black;
-    border-radius: 4px;
-    width: 200px;
-    z-index: 1000;
-    top: 60px;
-    left: 20px;
-}
-
-/*Кнопки "Меню" */
-.menu-toggle {
-    cursor: pointer;
-    font-size: 22px;
-    font-weight: bold;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-/* Окно кнопки меню */
+/* =========================
+    📂 ВЫПАДАЮЩИЕ МЕНЮ: КАТАЛОГ и МЕНЮ
+========================= */
+.catalog-list,
 .menu-list {
     list-style: none;
     padding: 15px;
@@ -68,7 +57,6 @@
     position: absolute;
     background: white;
     color: black;
-    display: none;
     border: 1px solid black;
     border-radius: 4px;
     width: 200px;
@@ -77,10 +65,31 @@
     left: 20px;
 }
 
-/* Ссылки */
+/* =========================
+    🔗 ССЫЛКИ
+========================= */
+/* Общие */
 .hover-link {
     color: black;
     text-decoration: none;
     margin: 20px;
     display: block;
+}
+
+/* ссылки внутри КАТАЛОГА */
+.catalog-list a,
+.catalog-list a:visited,
+.catalog-list a:hover,
+.catalog-list a:active {
+    color: black;
+    text-decoration: none;   /* убираем подчёркивание */
+}
+
+/* ссылки внутри МЕНЮ */
+.menu-list a,
+.menu-list a:visited,
+.menu-list a:hover,
+.menu-list a:active {
+    color: black;
+    text-decoration: none;
 }
